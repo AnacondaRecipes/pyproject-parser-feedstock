@@ -66,7 +66,7 @@ about:
   license_file: LICENSE
   description: Parser for 'pyproject.toml'
   doc_url: https://pyproject-parser.readthedocs.io
-  dev_url: https://pyproject-parser.readthedocs.io
+  dev_url: https://github.com/repo-helper/pyproject-parser
 
 extra:
   recipe-maintainers:
