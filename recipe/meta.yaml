@@ -36,7 +36,7 @@ requirements:
     - shippinglabel >=1.0.0
     - typing-extensions !=4.7.0,>=3.7.4.3
     # click and consolekit not in the run_constrained because upstream developer move it in run in the conda-forge.
-    - click >=7.1.2
+    - click >=7.1.2,<8.2
     - consolekit >=1.4.1
   run_constrained:
     - sdjson >=0.3.1
