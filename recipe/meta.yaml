@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: ff1ddb5d426c6d8b38ad73cda2d5caf3f568852cb4e0cf869345c89e8ca0fb76
+  url: https://github.com/repo-helper/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 5a95409b191b7c7be08d4e0c6e558c9253dc428750819cd65115619630a9aa6c
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - pyproject-parser=pyproject_parser.__main__:main
     - check-pyproject=pyproject_parser.__main__:check
@@ -41,9 +41,9 @@ requirements:
   run_constrained:
     - sdjson >=0.3.1
 
-# We can`t enable pytest because conftest uses the coincidence package, which is unavailable on the main channel.
-# The policy states that packages are not specifically built for testing.
 test:
+  source_files:
+    - tests
   imports:
     - pyproject_parser
   commands:
@@ -53,8 +53,13 @@ test:
     - check-pyproject --help
     - pyproject-fmt --help
     - pyproject-info --help
+    # ModuleNotFoundError: No module named 'sdjson'
+    - pytest -v -k "not (test_info or test_info_readme_license)" tests
   requires:
     - pip
+    - coincidence >=0.2.0
+    - pyproject-examples >=2023.6.30
+    - pytest >=6.0.0
 
 about:
   home: https://github.com/repo-helper/pyproject-parser
