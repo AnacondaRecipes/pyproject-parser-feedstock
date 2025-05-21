@@ -40,8 +40,6 @@ requirements:
     - consolekit >=1.4.1
   run_constrained:
     - sdjson >=0.3.1
-    - readme-renderer >=27.0
-    - docutils >=0.16
 
 # We can`t enable pytest because conftest uses the coincidence package, which is unavailable on the main channel.
 # The policy states that packages are not specifically built for testing.
