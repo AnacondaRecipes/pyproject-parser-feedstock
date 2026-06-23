@@ -61,6 +61,9 @@ test:
     - coincidence >=0.2.0
     - pyproject-examples >=2023.6.30
     - pytest >=6.0.0
+    # dependencies_invalid_requirement0 tests asserts against an older error message string, where the error
+    # description wording was updated post-v26.
+    - packaging <26
 
 about:
   home: https://github.com/repo-helper/pyproject-parser
