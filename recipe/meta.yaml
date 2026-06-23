@@ -1,5 +1,5 @@
 {% set name = "pyproject-parser" %}
-{% set version = "0.13.0" %}
+{% set version = "0.14.0" %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +10,7 @@ source:
   sha256: 5a95409b191b7c7be08d4e0c6e558c9253dc428750819cd65115619630a9aa6c
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - pyproject-parser=pyproject_parser.__main__:main
     - check-pyproject=pyproject_parser.__main__:check
