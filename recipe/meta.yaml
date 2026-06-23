@@ -26,17 +26,18 @@ requirements:
     - hatchling
     - hatch-requirements-txt
   run:
+    - python
     - apeye-core >=1.0.0
     - attrs >=20.3.0
     - dom-toml >=2.0.0
     - domdf-python-tools >=2.8.0
+    - license-expression >=30.0.0
     - natsort >=7.1.1
     - packaging >=20.9
-    - python
     - shippinglabel >=1.0.0
     - typing-extensions !=4.7.0,>=3.7.4.3
     # click and consolekit not in the run_constrained because upstream developer move it in run in the conda-forge.
-    - click >=7.1.2,<8.2
+    - click >=7.1.2
     - consolekit >=1.4.1
   run_constrained:
     - sdjson >=0.3.1
