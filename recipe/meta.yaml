@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/repo-helper/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 5a95409b191b7c7be08d4e0c6e558c9253dc428750819cd65115619630a9aa6c
+  sha256: fc83d131bb0f908822e2b51d56a0df52687b46b7d6690be1da34f8cf0773fc38
 
 build:
   number: 0
