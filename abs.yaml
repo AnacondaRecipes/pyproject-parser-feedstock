@@ -1,2 +1,3 @@
-upload_channels:
-  - sfe1ed40
+# disable testing in first pass to avoid cyclic dependencies in test (coincidence)
+build_parameters:
+  - "--no-test"
