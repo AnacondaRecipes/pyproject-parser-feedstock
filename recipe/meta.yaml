@@ -51,19 +51,20 @@ test:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - pyproject-parser --help
-    - check-pyproject --help
-    - pyproject-fmt --help
-    - pyproject-info --help
-    # ModuleNotFoundError: No module named 'sdjson'
-    - pytest -v -k "not (test_info or test_info_readme_license)" tests
-  requires:
-    - pip
-    - coincidence >=0.2.0
-    - pyproject-examples >=2023.6.30
-    - pytest >=6.0.0
-    # dependencies_invalid_requirement0 tests asserts against an older error message string, where the error
-    # description wording was updated post-v26.
-    - packaging <26
+    # disable testing in first pass to avoid cyclic dependencies in test (coincidence)
+#    - check-pyproject --help
+#    - pyproject-fmt --help
+#    - pyproject-info --help
+#    # ModuleNotFoundError: No module named 'sdjson'
+#    - pytest -v -k "not (test_info or test_info_readme_license)" tests
+#  requires:
+#    - pip
+#    - coincidence >=0.2.0
+#    - pyproject-examples >=2023.6.30
+#    - pytest >=6.0.0
+#    # dependencies_invalid_requirement0 tests asserts against an older error message string, where the error
+#    # description wording was updated post-v26.
+#    - packaging <26
 
 about:
   home: https://github.com/repo-helper/pyproject-parser
