@@ -63,8 +63,8 @@ test:
 #    - pyproject-info --help
 #    # ModuleNotFoundError: No module named 'sdjson'
 #    - pytest -v -k "not (test_info or test_info_readme_license)" tests
-#  requires:
-#    - pip
+  requires:
+    - pip
 #    - coincidence >=0.2.0
 #    - pyproject-examples >=2023.6.30
 #    - pytest >=6.0.0
