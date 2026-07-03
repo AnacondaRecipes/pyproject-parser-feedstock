@@ -37,8 +37,9 @@ requirements:
     - shippinglabel >=1.0.0
     - typing-extensions !=4.7.0,>=3.7.4.3
     # click and consolekit not in the run_constrained because upstream developer move it in run in the conda-forge.
-    # using click 8.1.7 instead of 7.1.2 due to issue with pip check on older versions
-    - click >=8.1.7
+    - click >=7.1.2  # [not win]
+    # using click 8.1.7 instead of 7.1.2 due to issue with pip check on Windows in older versions
+    - click >=8.1.7  # [win]
     - consolekit >=1.4.1
   run_constrained:
   # readme (this for at-runtime readme file related optional functionality)
