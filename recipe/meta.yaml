@@ -40,6 +40,12 @@ requirements:
     - click >=7.1.2
     - consolekit >=1.4.1
   run_constrained:
+  # readme (this for at-runtime readme file related optional functionality)
+    - docutils >=0.16,<0.22
+    - readme-renderer >=27.0
+  # readme-renderer[md]
+    - cmarkgfm >=0.2.0
+  # cli (click and consolekit dependencies moved to run, see above)
     - sdjson >=0.3.1
 
 test:
