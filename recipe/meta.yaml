@@ -59,12 +59,12 @@ test:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - pyproject-parser --help
+    - check-pyproject --help
+    - pyproject-fmt --help
+    - pyproject-info --help
     # cyclic test dependency (restore test once dependency is in)
     # pyproject-parser -> coincidence
     # coincidence -> whey -> pyproject-parser
-#    - check-pyproject --help
-#    - pyproject-fmt --help
-#    - pyproject-info --help
 #    # ModuleNotFoundError: No module named 'sdjson'
 #    - pytest -v -k "not (test_info or test_info_readme_license)" tests
   requires:
