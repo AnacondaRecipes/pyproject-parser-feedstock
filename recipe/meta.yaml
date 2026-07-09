@@ -1,5 +1,5 @@
 {% set name = "pyproject-parser" %}
-{% set version = "0.13.0" %}
+{% set version = "0.14.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/repo-helper/{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 5a95409b191b7c7be08d4e0c6e558c9253dc428750819cd65115619630a9aa6c
+  sha256: fc83d131bb0f908822e2b51d56a0df52687b46b7d6690be1da34f8cf0773fc38
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - pyproject-parser=pyproject_parser.__main__:main
     - check-pyproject=pyproject_parser.__main__:check
@@ -26,19 +26,28 @@ requirements:
     - hatchling
     - hatch-requirements-txt
   run:
+    - python
     - apeye-core >=1.0.0
     - attrs >=20.3.0
     - dom-toml >=2.0.0
     - domdf-python-tools >=2.8.0
+    - license-expression >=30.0.0
     - natsort >=7.1.1
     - packaging >=20.9
-    - python
     - shippinglabel >=1.0.0
     - typing-extensions !=4.7.0,>=3.7.4.3
     # click and consolekit not in the run_constrained because upstream developer move it in run in the conda-forge.
-    - click >=7.1.2,<8.2
+    # on Windows, click has issue with pip check in versions prior to 8.1.7 - increase min ver for Windows.
+    - click >=7.1.2  # [not win]
+    - click >=8.1.7  # [win]
     - consolekit >=1.4.1
   run_constrained:
+  # readme (this for at-runtime readme file related optional functionality)
+    - docutils >=0.16,<0.22
+    - readme-renderer >=27.0
+  # readme-renderer[md]
+    - cmarkgfm >=0.2.0
+  # cli (click and consolekit dependencies moved to run, see above)
     - sdjson >=0.3.1
 
 test:
@@ -53,13 +62,19 @@ test:
     - check-pyproject --help
     - pyproject-fmt --help
     - pyproject-info --help
-    # ModuleNotFoundError: No module named 'sdjson'
-    - pytest -v -k "not (test_info or test_info_readme_license)" tests
+    # cyclic test dependency (restore test once dependency is in)
+    # pyproject-parser -> coincidence
+    # coincidence -> whey -> pyproject-parser
+#    # ModuleNotFoundError: No module named 'sdjson'
+#    - pytest -v -k "not (test_info or test_info_readme_license)" tests
   requires:
     - pip
-    - coincidence >=0.2.0
-    - pyproject-examples >=2023.6.30
-    - pytest >=6.0.0
+#    - coincidence >=0.2.0
+#    - pyproject-examples >=2023.6.30
+#    - pytest >=6.0.0
+#    # dependencies_invalid_requirement0 tests asserts against an older error message string, where the error
+#    # description wording was updated post-v26.
+#    - packaging <26
 
 about:
   home: https://github.com/repo-helper/pyproject-parser
