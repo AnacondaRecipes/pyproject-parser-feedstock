@@ -10,7 +10,7 @@ source:
   sha256: fc83d131bb0f908822e2b51d56a0df52687b46b7d6690be1da34f8cf0773fc38
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - pyproject-parser=pyproject_parser.__main__:main
     - check-pyproject=pyproject_parser.__main__:check
@@ -62,19 +62,16 @@ test:
     - check-pyproject --help
     - pyproject-fmt --help
     - pyproject-info --help
-    # cyclic test dependency (restore test once dependency is in)
-    # pyproject-parser -> coincidence
-    # coincidence -> whey -> pyproject-parser
-#    # ModuleNotFoundError: No module named 'sdjson'
-#    - pytest -v -k "not (test_info or test_info_readme_license)" tests
+    # ModuleNotFoundError: No module named 'sdjson'
+    - pytest -v -k "not (test_info or test_info_readme_license)" tests
   requires:
     - pip
-#    - coincidence >=0.2.0
-#    - pyproject-examples >=2023.6.30
-#    - pytest >=6.0.0
-#    # dependencies_invalid_requirement0 tests asserts against an older error message string, where the error
-#    # description wording was updated post-v26.
-#    - packaging <26
+    - coincidence >=0.2.0
+    - pyproject-examples >=2023.6.30
+    - pytest >=6.0.0
+    # dependencies_invalid_requirement0 tests asserts against an older error message string, where the error
+    # description wording was updated post-v26.
+    - packaging <26
 
 about:
   home: https://github.com/repo-helper/pyproject-parser
